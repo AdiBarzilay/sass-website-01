@@ -611,7 +611,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
   z-index: 3000;
   opacity: 0;
   visibility: hidden;
-  transition: all .3s;
+  transition: all 0.3s;
+  overflow: hidden;
   /* the popup here becomes the target and then we simply style the child element of the popup */ }
   .popup__content {
     position: absolute;
@@ -626,18 +627,33 @@ ORDER: Base + typography > general layout + grid > page layout > components
     overflow: hidden;
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.5);
-    transition: all .4s .2s; }
+    transition: all 0.4s 0.2s; }
   .popup__left {
     width: 33.333333%;
     display: table-cell; }
+    @media (max-width: 56.25em) {
+      .popup__left {
+        width: 100%;
+        display: table-row; } }
   .popup__right {
     width: 66.6666667%;
     display: table-cell;
     vertical-align: middle;
     padding: 3rem 5rem; }
+    @media (max-width: 56.25em) {
+      .popup__right {
+        width: 100%; } }
   .popup__img {
     display: block;
     width: 100%; }
+    @media (max-width: 56.25em) {
+      .popup__img {
+        display: inline-block;
+        width: 50%;
+        margin-top: -5px; } }
+    @media (max-width: 37.5em) {
+      .popup__img {
+        display: none; } }
   .popup__text {
     font-size: 1.4rem;
     margin-bottom: 4rem;
@@ -645,6 +661,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
     column-gap: 4rem;
     column-rule: 1px solid #eee;
     hyphens: auto; }
+    @media (max-width: 56.25em) {
+      .popup__text {
+        column-count: 1; } }
   .popup:target {
     opacity: 1;
     visibility: visible; }
@@ -826,7 +845,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
     top: 0;
     left: 0;
     z-index: 1500;
-    width: 0;
+    visibility: hidden;
+    width: 70%;
     opacity: 0;
     transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
   .navigation__list {
@@ -836,6 +856,12 @@ ORDER: Base + typography > general layout + grid > page layout > components
     transform: translate(-50%, -50%);
     list-style: none;
     text-align: center; }
+    @media (max-width: 56.25em) {
+      .navigation__list {
+        width: 70%; } }
+    @media (max-width: 37.5em) {
+      .navigation__list {
+        width: 80%; } }
   .navigation__item {
     margin: 1rem; }
   .navigation__link:link, .navigation__link:visited {
@@ -859,6 +885,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   .navigation__checkbox:checked ~ .navigation__background {
     transform: scale(80); }
   .navigation__checkbox:checked ~ .navigation__nav {
+    visibility: visible;
     opacity: 1;
     width: 100%; }
   .navigation__icon {
